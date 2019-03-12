@@ -82,8 +82,8 @@ public class Bot extends TelegramLongPollingBot {
             /**
              * Cообщение выбора ближайшего города
              */
-            else if (messageText.substring(2).equals(BotHelper.Answers.KHARKOV_CITY.text) || messageText.substring(2).equals(BotHelper.Answers.KIEV_CITY.text)
-                    || messageText.substring(2).equals(BotHelper.Answers.ODESSA_CITY.text) || messageText.substring(2).equals(BotHelper.Answers.LVOV_CITY.text)) {
+            else if (messageText!="" && (messageText.substring(2).equals(BotHelper.Answers.KHARKOV_CITY.text) || messageText.substring(2).equals(BotHelper.Answers.KIEV_CITY.text)
+                    || messageText.substring(2).equals(BotHelper.Answers.ODESSA_CITY.text) || messageText.substring(2).equals(BotHelper.Answers.LVOV_CITY.text))) {
                 System.out.println(messageText.substring(2));
                 user = new User(userID, "/city", userDBManager.getUserById(userID).getPhoneNumber(), messageText.substring(2));
                 handleUser(user);
