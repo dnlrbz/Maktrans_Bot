@@ -7,7 +7,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionBotDB {
-    public static final String URL = "jdbc:mysql://localhost:3306/bot_db?autoReconnect=true&useSSL=false";
+   // public static final String URL = "jdbc:mysql://localhost:3306/bot_db?autoReconnect=true&useSSL=false";
+    public static final String URL = "jdbc:mysql://207.154.232.137:3306/bot_db?useUnicode=yes&characterEncoding=UTF-8";
     public static final String USER = "root";
     public static final String PASS = "danil123";
     /**

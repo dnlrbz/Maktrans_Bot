@@ -49,13 +49,13 @@ public class BotHelper {
     }
 
     public enum Answers {
-        LVOV_CITY(Emoji.ROUND_PUSHPIN + "Львов"),
-        ODESSA_CITY(Emoji.ROUND_PUSHPIN +"Одесса"),
-        KIEV_CITY(Emoji.ROUND_PUSHPIN +"Киев"),
-        KHARKOV_CITY(Emoji.ROUND_PUSHPIN +"Харьков"),
+        LVOV_CITY("Львов"),
+        ODESSA_CITY("Одесса"),
+        KIEV_CITY("Киев"),
+        KHARKOV_CITY("Харьков"),
         GREETING("Виртуальный ассистент Мактранс приветствует Вас, "),
         SELECT_CITY("Выберите ближайший к Вам город"),
-        GIVE_NUMBER("Предоставьте Ваш номер телефона пожалуйста, чтобы мы могли узнать статус ремонта"),
+        GIVE_NUMBER("Предоставьте Ваш номер телефона пожалуйста, чтобы мы могли узнать статус ремонта.\n\nНажмите \"Поделиться контактом\""),
         CITY_CHOSEN("Вы выбрали город "),
         SELECT_OPTION("Выберите интересующий Вас вопрос"),
         ADDRESS_AND_WORKING_TIME(Emoji.ROUND_PUSHPIN+""+Emoji.ALARM_CLOCK+ "Адрес и график работы"),

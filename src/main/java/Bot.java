@@ -33,10 +33,10 @@ public class Bot extends TelegramLongPollingBot {
         ApiContextInitializer.init();
 
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
-        cities.add(BotHelper.Answers.KIEV_CITY.text);
-        cities.add(BotHelper.Answers.ODESSA_CITY.text);
-        cities.add(BotHelper.Answers.KHARKOV_CITY.text);
-        cities.add(BotHelper.Answers.LVOV_CITY.text);
+        cities.add(Emoji.ROUND_PUSHPIN+ BotHelper.Answers.KIEV_CITY.text);
+        cities.add(Emoji.ROUND_PUSHPIN+ BotHelper.Answers.ODESSA_CITY.text);
+        cities.add(Emoji.ROUND_PUSHPIN+BotHelper.Answers.KHARKOV_CITY.text);
+        cities.add(Emoji.ROUND_PUSHPIN+BotHelper.Answers.LVOV_CITY.text);
         try {
             telegramBotsApi.registerBot((LongPollingBot) new Bot());
 
@@ -51,6 +51,7 @@ public class Bot extends TelegramLongPollingBot {
         Message message = update.getMessage();
 
         User user = null;
+        String userID = message.getFrom().getId().toString();
         ArrayList<String> answeroptions = BotHelper.getMainMenuOptions();
 
         if (message != null && (message.hasText() || message.hasContact())) {
@@ -66,8 +67,14 @@ public class Bot extends TelegramLongPollingBot {
              * Начальное сообщение
              */
             if (messageText.equals("/start")) {
-                System.out.println("/start");
-                user = new User(message.getFrom().getId().toString(), "/start", "", "");
+                //System.out.println("/start");
+                //String phoneNumber = userDBManager.getUserById(userID).getPhoneNumber();
+                //if (phoneNumber==null || phoneNumber.equals("")) {
+                    user = new User(message.getFrom().getId().toString(), "/start", "_", "");
+                //} else {
+                //    user = new User(message.getFrom().getId().toString(), "/start", phoneNumber, "");
+               // }
+
                 handleUser(user);
                 sendMsg(message, BotHelper.Answers.GREETING.text + update.getMessage().getFrom().getFirstName()
                         + "!\n\n" + BotHelper.Answers.SELECT_CITY.text, cities);
@@ -75,10 +82,10 @@ public class Bot extends TelegramLongPollingBot {
             /**
              * Cообщение выбора ближайшего города
              */
-            else if (messageText.equals(BotHelper.Answers.KHARKOV_CITY.text) || messageText.equals(BotHelper.Answers.KIEV_CITY.text)
-                    || messageText.equals(BotHelper.Answers.ODESSA_CITY.text) || messageText.equals(BotHelper.Answers.LVOV_CITY.text)) {
-
-                user = new User(message.getFrom().getId().toString(), "/city", "", messageText);
+            else if (messageText.substring(2).equals(BotHelper.Answers.KHARKOV_CITY.text) || messageText.substring(2).equals(BotHelper.Answers.KIEV_CITY.text)
+                    || messageText.substring(2).equals(BotHelper.Answers.ODESSA_CITY.text) || messageText.substring(2).equals(BotHelper.Answers.LVOV_CITY.text)) {
+                System.out.println(messageText.substring(2));
+                user = new User(userID, "/city", userDBManager.getUserById(userID).getPhoneNumber(), messageText.substring(2));
                 handleUser(user);
 
                 sendMsg(message, BotHelper.Answers.CITY_CHOSEN.text + messageText, answeroptions);
@@ -120,6 +127,7 @@ public class Bot extends TelegramLongPollingBot {
              */
             else if (messageText.equals(BotHelper.Answers.ADDRESS_AND_WORKING_TIME.text)) {
                 String userCity = userDBManager.getUserById(message.getFrom().getId().toString()).getCity();
+                System.out.println(userCity);
                 InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
 
                 List<List<InlineKeyboardButton>> buttons = new ArrayList<>();
@@ -272,9 +280,20 @@ public class Bot extends TelegramLongPollingBot {
              */
             else if (messageText.equals(BotHelper.Answers.STATUS_OF_REPAIR.text)) {
                 ArrayList<String> options = new ArrayList<>();
+                String userPhone = userDBManager.getUserById(userID).getPhoneNumber()==null ? "":userDBManager.getUserById(userID).getPhoneNumber() ;
                 options.add(BotHelper.Answers.SHARE_CONTACT.text);
                 options.add(BotHelper.Answers.OTMENA.text);
-                sendMsg(message, BotHelper.Answers.GIVE_NUMBER.text, options);
+                if (userPhone==null || userPhone.equals("_")) {
+                    sendMsg(message, BotHelper.Answers.GIVE_NUMBER.text, options);
+                }
+                else {
+                    ArrayList<String> otherOptions = new ArrayList<>();
+                    otherOptions.add(BotHelper.Answers.STATUS_CAR.text);
+                    otherOptions.add(BotHelper.Answers.STATUS_GIDROTRANSFORMATOR.text);
+                    otherOptions.add(BotHelper.Answers.OTMENA.text);
+                    System.out.println(userDBManager.getUserById(message.getFrom().getId().toString()));
+                    sendMsg(message, BotHelper.Answers.SELECT_OPTION.text, otherOptions);
+                }
             }
             /**
              * Пользователь хочет поменять город
