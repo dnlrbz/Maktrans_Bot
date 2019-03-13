@@ -162,7 +162,10 @@ public enum Emoji {
     ARROW_DOWN(null,'\u2198'),
     MOBILE_PHONE('\ud83d','\udcf1'),
     POST_BOX('\ud83d','\udcee'),
-    BACK_ARROW(null,'\u2b05');
+    BACK_ARROW(null,'\u2b05'),
+    MONEY_BAG('\ud83d','\udcb0'),
+    DOLLAR('\ud83d','\udcb5'),
+    SHOPPING_BAGS('\ud83d','\udecd');
 
     Character firstChar;
     Character secondChar;

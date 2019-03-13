@@ -16,6 +16,7 @@ public class BotHelper {
         answeroptions.add(Answers.REPAIR_GIDRO.text);
         answeroptions.add(Answers.STATUS_OF_REPAIR.text);
         answeroptions.add(Answers.CHANGE_CITY.text);
+        answeroptions.add(Answers.MAKE_ORDER.text);
         return answeroptions;
     }
 
@@ -73,14 +74,16 @@ public class BotHelper {
         SEND_PART(Emoji.POST_BOX+"Отправить деталь в ремонт"),
         SHARE_CONTACT("Поделиться контактом"),
         STATUS_OF_REPAIR(Emoji.SPEECH+"Узнать статус ремонта"),
-        WORKING_TIMES_SHOP("Отдел запчастей:\nПонедельник - пятница 9:00-18:00\n\n"),
-        WORKING_TIMES1("Отдел ремонта:\nПонедельник - суббота 9:00-18:00, воскресенье выходной\n\nАдрес в Google Maps"+ Emoji.ARROW_DOWN),
-        CONTACT_KIEV("Железнодорожное шоссе:\n+380505272236\n\n\nул. Степана Бандеры:\n+380990015742\n+380968965155"),
-        CONTACT_ODESSA("Отдел ремонта:\n+380981103761\n+380502628449\n+380674692328"),
-        CONTACT_KHARKOV("Отдел ремонта:\n+380968122122\n+380931410041"),
-        CONTACT_LVOV("Отдел ремонта:\n+380674692328\n+380502628449"),
-        DIAGNOSTICS_INFO("Подъезжайте в порядке живой очереди с 09:00 до 18:00, в любой день, кроме воскресенья.\n\n"+"Цена: 500 гривен"),
-        GIDRO_TRANS_INFO("Ремонт занимает 1-2 дня, после того как мы заберем его с Новой Почты.\n\nЦена: Ремонт 100$ + Запчасти 40-180$ в зависимости от модели");
+        WORKING_TIMES_SHOP(Emoji.MONEY_BAG+"Отдел запчастей:\nПонедельник - пятница 9:00-18:00\n\n"),
+        WORKING_TIMES1(Emoji.WRENCH +"Отдел ремонта:\nПонедельник - суббота 9:00-18:00, воскресенье выходной\n\nАдрес в Google Maps"+ Emoji.ARROW_DOWN),
+        CONTACT_KIEV(Emoji.ROUND_PUSHPIN+"Железнодорожное шоссе:\n+380505272236\n\n\n"+Emoji.ROUND_PUSHPIN+ "ул. Степана Бандеры:\n+380990015742\n+380968965155"),
+        CONTACT_ODESSA(Emoji.WRENCH + "Отдел ремонта:\n+380981103761\n+380502628449\n+380674692328"),
+        CONTACT_KHARKOV(Emoji.WRENCH +"Отдел ремонта:\n+380968122122\n+380931410041"),
+        CONTACT_LVOV(Emoji.WRENCH +"Отдел ремонта:\n+380674692328\n+380502628449"),
+        DIAGNOSTICS_INFO(Emoji.HEAVY_EXCLAMATION_MARK_SYMBOL+"Подъезжайте в порядке живой очереди с 09:00 до 18:00, в любой день, кроме воскресенья.\n\n"
+                +Emoji.DOLLAR+"Цена: 500 гривен"),
+        GIDRO_TRANS_INFO(Emoji.ALARM_CLOCK+"Ремонт занимает 1-2 дня, после того как мы заберем его с Новой Почты.\n\n"+Emoji.DOLLAR+"Цена: Ремонт 100$ + Запчасти 40-180$ в зависимости от модели"),
+        MAKE_ORDER(Emoji.SHOPPING_BAGS+"Оформить заказ");
 
 
 
