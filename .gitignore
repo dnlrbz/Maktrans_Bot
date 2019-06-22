@@ -1,6 +1,9 @@
 .idea
 
+.class
 
 *.jar
 
 classes/
+
+target/
